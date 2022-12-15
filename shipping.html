@@ -147,7 +147,7 @@
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
                                 <div id='content'>
-                                    <table id='demo' cellpadding='10px' style="text-align:left;">
+                                    <table id='demo-table' cellpadding='10px' style="text-align:left;">
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -178,29 +178,44 @@
         <script src="assets/js/theme.js"></script>
         <script>
             let xmlContent = '';
-            let tableBooks = document.getElementById('demo');
+            let tableBooks = document.getElementById('demo-table');
 
             document.addEventListener('DOMContentLoaded', function () {
+                let name = document.getElementById('name').value;
+                let location = document.getElementById('location').value;
+                let thau = document.getElementById('partner').value;
+                let available = document.getElementById('available').value;
+                let row = tableBooks.insertRow(tableBooks.rows.length);
+                row.insertCell(0).innerHTML = name;
+                row.insertCell(1).innerHTML = location;
+                row.insertCell(2).innerHTML = thau;
+                row.insertCell(3).innerHTML = available;
+                let xml = new XMLSerializer().serializeToString(xmlContent);
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', 'shippingzone.xml', true);
-                xhr.onload = function () {
-                    if (this.status == 200) {
-                        xmlContent = this.responseXML;
-                        let books = xmlContent.getElementsByTagName('demo');
-                        for (let i = 0; i < books.length; i++) {
-                            let name = books[i].getElementsByTagName('name')[0].textContent;
-                            let location = books[i].getElementsByTagName('location')[0].textContent;
-                            let thau = books[i].getElementsByTagName('thau')[0].textContent;
-                            let available = books[i].getElementsByTagName('available')[0].textContent;
-                            let row = tableBooks.insertRow(i + 1);
-                            row.insertCell(0).innerHTML = name;
-                            row.insertCell(1).innerHTML = location;
-                            row.insertCell(2).innerHTML = thau;
-                            row.insertCell(3).innerHTML = available;
-                        }
-                    }
-                }
+                xhr.open('POST', 'shippingzone.xml', true);
+                xhr.setRequestHeader('Content-Type', 'text/xml');
+                xhr.send(xml);
+                
                 xhr.send();
+            });
+        </script>
+        <script>
+            let button = document.getElementById('button');
+            button.addEventListener('click', function () {
+                let name = document.getElementById('name').value;
+                let location = document.getElementById('location').value;
+                let thau = document.getElementById('partner').value;
+                let available = document.getElementById('available').value;
+                let row = tableBooks.insertRow(tableBooks.rows.length);
+                row.insertCell(0).innerHTML = name;
+                row.insertCell(1).innerHTML = location;
+                row.insertCell(2).innerHTML = thau;
+                row.insertCell(3).innerHTML = available;
+                let xml = new XMLSerializer().serializeToString(xmlContent);
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', 'shippingzone.xml', true);
+                xhr.setRequestHeader('Content-Type', 'text/xml');
+                xhr.send(xml);
             });
         </script>
 
