@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shippingzone>
+    <zone>
+        <name>Độc lạ Bình Dương</name>
+        <location>Bình Dương, Việt Nam</location>
+        <thau>Giao hàng Nhanh</thau>
+        <available>yes</available>
+    </zone>
+    <zone>
+        <name>Sài Gòn lạc nhau là mất hàng</name>
+        <location>Thành phố Hồ Chí Minh, Việt Nam</location>
+        <thau>Giao hàng Nhanh</thau>
+        <available>yes</available>
+    </zone>
+    <zone>
+        <name>Tây Ninh Xứ Biển</name>
+        <location>Tây Ninh, Việt Nam</location>
+        <thau>Giao hàng Nhanh</thau>
+        <available>yes</available>
+    </zone>
+    <zone>
+        <name>Xứ Nẫu Tây Sơn</name>
+        <location>Bình Định, Việt Nam</location>
+        <thau>Giao hàng Nhanh</thau>
+        <available>yes</available>
+    </zone>
+    <zone>
+        <name>Tháp Mười đẹp nhất hoa hậu</name>
+        <location>Đồng Tháp, Việt Nam</location>
+        <thau>Giao hàng Nhanh</thau>
+        <available>yes</available>
+    </zone>
+</shippingzone>
