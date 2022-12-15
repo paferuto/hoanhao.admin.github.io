@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='content'>
+        <table id='books' cellpadding='10px' style="text-align:left;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Zone</th>
+                    <th>Thau</th>
+                    <th>Available</th>
+                </tr>                
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let xmlContent = '';
+        let tableBooks = document.getElementById('demo');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'shippingzone.xml', true);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    xmlContent = this.responseXML;
+                    let books = xmlContent.getElementsByTagName('demo');
+                    for (let i = 0; i < books.length; i++) {
+                        let name = books[i].getElementsByTagName('name')[0].textContent;
+                        let location = books[i].getElementsByTagName('location')[0].textContent;
+                        let thau = books[i].getElementsByTagName('thau')[0].textContent;
+                        let available = books[i].getElementsByTagName('available')[0].textContent;
+                        let row = tableBooks.insertRow(i + 1);
+                        row.insertCell(0).innerHTML = name;
+                        row.insertCell(1).innerHTML = location;
+                        row.insertCell(2).innerHTML = thau;
+                        row.insertCell(3).innerHTML = available;
+                    }
+                }
+            }
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
